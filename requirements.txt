@@ -1,0 +1,19 @@
+# Runtime dependencies for badge evaluation system
+# Install with: pip install -r requirements.txt
+
+# Database
+motor==3.7.1
+pymongo>=4.9,<5.0
+
+# AWS Services  
+boto3>=1.26.0,<2.0
+
+# Environment Configuration
+python-dotenv>=1.0.0,<2.0
+
+# HTTP Client (for API calls)
+aiohttp>=3.8.0,<4.0
+
+# SQL Client (for API calls)
+aiomysql>=0.2.0,<1.0
+ 
