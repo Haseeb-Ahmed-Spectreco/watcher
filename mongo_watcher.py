@@ -701,8 +701,9 @@ class MongoDBPollingWatcher:
             
             # Normalize site_code - convert None to empty string for consistency
             if site_code is None:
+                site_code = "all"
+            if site_code == "":
                 site_code = ""
-            
             if company_id:  # Only process if we have a company_id
                 self.stats['successful_extractions'] += 1
                 
@@ -761,9 +762,12 @@ class MongoDBPollingWatcher:
         # Convert to string and clean up
         if company_id is not None:
             company_id = str(company_id).strip()
-        if site_code is not None:
-            print("Site code before strip:", site_code)
-            site_code = str(site_code).strip()
+        if site_code is "":
+            site_code = ""
+            print("Site Code is empty string, setting to 'all'")
+        if site_code is None:
+            print("Site Code is None, setting to empty string")
+            site_code = "all"
         
         return (company_id if company_id else None, 
                 site_code if site_code else None)
