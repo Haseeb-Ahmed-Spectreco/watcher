@@ -676,8 +676,12 @@ class SQLDatabaseWatcher:
         # Convert to string and clean up
         if company_id is not None:
             company_id = str(company_id).strip()
-        if site_code is not None:
-            site_code = str(site_code).strip()
+        if site_code is "":
+            site_code = ""
+            print("Site Code is empty string, setting to 'all'")
+        if site_code is None:
+            print("Site Code is None, setting to empty string")
+            site_code = "all"
         
         return (company_id if company_id else None, 
                 site_code if site_code else None)
